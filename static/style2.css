@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+}
+
+@font-face {
+        font-family: 'Audiowide-Regular';
+        src: url("/fonts/Audiowide/Audiowide-Regular.ttf")
+        format('ttf');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+.header {
+    background-color: #5AB9CE;
+    height: 75px;
+    font-family: 'Audiowide-Regular', 'sans-serif';
+    font-size: 3em;
+}
+
+.title {
+    text-align: left;
+    font-size: 30px;
+
+    font-family: 'sans-serif';
+    padding-top: 1%;
+    padding-left: 1%;
+}
+
+
+/*
+.nav {
+    display: flex;
+    flex-direction: row;
+    /* display: inline-block; */
+
+nav {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-width: 800px;
+    text-align: left;
+    height: 20px;
+    padding: 10px 20px;
+}
+
+nav .links {
+    float: right;
+}
+
+main div form input{
+    height: 200px;
+    width: 700px;
+}
+

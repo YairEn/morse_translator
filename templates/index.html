@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content%}
+<main>
+    <div>
+                    <span class="welcome">
+                        Welcome!
+                    </span>
+
+        <pre class="usage">
+    Usage:
+    - To translate normal text just type in the message
+
+    - To translate morse code
+    use ( ‘.’ , ’-’, ‘_’ ) to represent the letters
+    seperating letters by space
+    and words by ‘~‘
+                </pre>
+
+        <label class="lblInputMsg">Input Message:</label>
+
+        <form class="form_msg" action="#" method="post">
+                    <textarea class="inputForm" name="msg" title="" cols="30" rows="10"
+                              placeholder="Enter your text here">
+{{input_placeholder}}</textarea>
+            <label class="lblOutputMsg">Output Message:</label>
+            <input class="btnTranslate" type="submit" value="Translate">
+        </form>
+    </div>
+
+    <div class="result">
+        <pre>{{result}}</pre>
+    </div>
+
+    <div>
+    <pre class="note">
+Note!
+The translator only supports English.
+New languages - comming soon!
+            </pre>
+    </div>
+</main>
+{%endblock%}
