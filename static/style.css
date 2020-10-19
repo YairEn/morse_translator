@@ -2,14 +2,6 @@
     box-sizing: border-box;
 }
 
-html {
-    font: 1.2em/1.4 Arial, Helvetica, sans-serif;
-}
-
-body {
-    padding: 0 0 1em;
-}
-
 body {
     margin: 0;
     background: #CEE9EF;
@@ -44,10 +36,12 @@ header nav ul {
 
 header nav ul > li {
     margin: 5px;
+    border-right: 2px solid black;
+    padding: 5px;
 }
 
 /*header a {*/
-    /*display: block;*/
+/*display: block;*/
 /*}*/
 
 header .title {
@@ -254,35 +248,57 @@ footer {
 }
 
 @media screen and (max-width: 1406px) {
-    .result {
-        width: 614px;
-        height: 348px;
-        left: 25px;
-        top: 896px;
+    .welcome {
+        font-size: 36px;
+    }
+
+    .usage {
+        font-size: 24px;
+        line-height: 33px;
+    }
+
+    .lblInputMsg {
+        top: 513px;
+        font-size: 30px;
+        width: 252px;
+    }
+
+    main div form .inputForm{
+        width: 717px;
+        top: 589px;
+        font-size: 26px;
+    }
+
+    .btnTranslate{
+        width: 183px;
+        height: 55px;
+        left: 270px;
+        top: 974px;
+        font-size: x-large;
     }
 
     .lblOutputMsg {
-        width: 212px;
+        width: 274px;
         height: 36px;
         left: 25px;
-        top: 853px;
+        top: 1092px;
+        font-size: 30px;
 
     }
 
-    .btnTranslate {
-        width: 101px;
-        height: 27px;
-        position: absolute;
-        left: 270px;
-        top: 800px;
+    .result {
+        width: 717px;
+        left: 25px;
+        top: 1138px;
     }
 
-    .note{
-           top: 1261px;
+    .note {
+        top: 1532px;
+        font-size: 20px;
     }
 
-    footer{
-        margin-top: 1277px;
+    footer {
+        margin-top: 1616px;
     }
 }
 
