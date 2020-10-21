@@ -1,20 +1,20 @@
 from flask import Flask, render_template, request, jsonify
-import requests
+
 
 from morse import translate, show_morse_table
 
 app = Flask(__name__)
 
 
-@app.route("/")
-def home():
-    placeholder = 'Enter your message here'
-    return render_template("index.html", input_placeholder=placeholder)
+# @app.route("/")
+# def home():
+#     placeholder = 'Enter your message here'
+#     return render_template("index.html", input_placeholder=placeholder)
 
 
-@app.route("/<name>")
-def test(name):
-    return render_template("index.html", content=name)
+# @app.route("/<name>")
+# def test(name):
+#     return render_template("index.html", content=name)
 
 
 @app.route("/", methods=["POST", "GET"])
@@ -33,11 +33,6 @@ def translate_msg():
 def morse_table():
     morse_table_result = show_morse_table()
     return render_template("morse_table.html", morse_table_result=morse_table_result)
-
-
-@app.route("/check", methods=['POST'])
-def user(usr):
-    return f"<h1>{usr}</h1>"
 
 
 if __name__ == "__main__":

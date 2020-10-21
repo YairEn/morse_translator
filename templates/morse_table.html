@@ -2,6 +2,7 @@
 {% block content %}
     <main>
         <div>
+            {% for morse_table in morse_table_result%}
             <table class="morse_table">
                 <thead>
                 <tr>
@@ -10,7 +11,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for letter, morse_letter in morse_table_result.items() %}
+                {% for letter, morse_letter in morse_table.items() %}
                 <tr>
                     <td>{{letter}}</td>
                     <td>{{morse_letter}}</td>
@@ -18,6 +19,7 @@
                 {% endfor %}
                 </tbody>
             </table>
+            {% endfor %}
         </div>
     </main>
 {%endblock%}
