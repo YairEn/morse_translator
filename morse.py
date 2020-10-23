@@ -1,5 +1,11 @@
-from morse_tables import get_table_by_text, MORSE_TABLES, check_is_alpha, check_is_morse
+from morse_tables import get_table_by_text, MORSE_TABLES
+from validators import check_is_alpha, check_is_morse, check_unsupported_letters
 import requests
+
+from exceptions import LanguageDoseNotSupported, MixedLanguages, UnsupportedLetter
+import logging
+
+app_logger = logging.getLogger('morse_logger')
 
 
 def _get_unique_letters(text):
@@ -10,22 +16,32 @@ def translate(text):
     try:
         is_alpha = check_is_alpha(text)
         is_morse = check_is_morse(text)
+        is_unsupported_letter = check_unsupported_letters(text)
 
         if is_alpha and is_morse:
-            raise Exception
+            raise MixedLanguages
+        elif is_unsupported_letter:
+            raise UnsupportedLetter
         elif is_alpha:
             try:
                 morse_table_code = get_table_by_text(text)
+            except LanguageDoseNotSupported as err:
+                app_logger.error(err.msg)
+                return err.msg
             except Exception as err:
-                pass
+                app_logger.error(err)
             else:
                 return _encocde(text, morse_table_code)
         elif is_morse:
             return _decode(text)
         else:
             return text
-    except Exception as err:
-        pass
+    except MixedLanguages as err:
+        app_logger.error(err.msg)
+        return err.msg
+    except UnsupportedLetter as err:
+        app_logger.error(err.msg)
+        return err.msg
 
 
 def _encocde(text, morse_table):
@@ -40,8 +56,6 @@ def _encocde(text, morse_table):
             translated_letter += ' '
 
         text = text.replace(letter, translated_letter)
-
-    print(text)
     return text
 
 
@@ -53,13 +67,10 @@ def _decode(text):
         normal_text = requests.get(API)
         return normal_text.json()['plaintext']
     except Exception as err:
-        pass
+        app_logger.fatal(err)
 
 
 def show_morse_table():
-    morse_html_table = ""
-    #    for letter, morse_letter in MORSE_CODE_DICT.items():
-    #       morse_html_table += f" <tr> <td>{letter}</td> <td>{morse_letter}</td></tr>"
     return MORSE_TABLES
 
 

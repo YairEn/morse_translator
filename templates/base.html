@@ -6,13 +6,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Artifika&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../static/style.css">
-    <title>Morse Translaotr</title>
+    <title>Morse Translator</title>
 </head>
 
 <body>
 <header class="header">
     <div class="title">
-        <a href="index.html">Morse Translator</a>
+        <a href="/">Morse Translator</a>
+        <span class="mini_title">/ {% block mini_title %}{% endblock %} </span>
     </div>
     <nav>
         <ul class="links">
@@ -27,7 +28,7 @@
     {% endblock %}
 </main>
 <footer>
-    &copy All rights reserved to Yair Engel
+    &copy All rights reserved
 </footer>
 </body>
 

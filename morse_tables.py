@@ -1,3 +1,5 @@
+from exceptions import LanguageDoseNotSupported
+
 # Dictionary representing the morse code chart
 # The dict was taken from https://www.geeksforgeeks.org/morse-code-translator-python
 MORSE_EN_CODE_DICT = {'A': '.-', 'B': '-...',
@@ -17,7 +19,13 @@ MORSE_EN_CODE_DICT = {'A': '.-', 'B': '-...',
                       '(': '-.--.', ')': '-.--.-', ' ': ' ',
                       '\n': '\n', '\r': '', '!': '-.-.--'}
 
-MORSE_TABLES = [MORSE_EN_CODE_DICT]
+MORSE_HE_CODE_DICT = {
+    'א': '.-'
+}
+
+MORSE_TABLES = [MORSE_EN_CODE_DICT, MORSE_HE_CODE_DICT]
+
+UNSUPPORTED_LETEERS = ['~', '_', '`', '#', '$', '%', '^', ';', '*', '<', '>', '\\']
 
 
 def get_table_by_text(text):
@@ -27,7 +35,7 @@ def get_table_by_text(text):
             return morse_table
         if letter_to_check in morse_table.values():
             return MORSE_EN_CODE_DICT
-    raise Exception("The Morse Translator dose not support this language")
+    raise LanguageDoseNotSupported
 
 
 def _get_first_letter_in_text(text):
@@ -37,15 +45,3 @@ def _get_first_letter_in_text(text):
     return text[0]
 
 
-def check_is_morse(text):
-    for code in text.split(' '):
-        if code in MORSE_EN_CODE_DICT.values():
-            return True
-    return False
-
-
-def check_is_alpha(text):
-    for letter in text:
-        if letter.isalpha():
-            return True
-    return False

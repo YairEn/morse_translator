@@ -1,20 +1,10 @@
-from flask import Flask, render_template, request, jsonify
-
+from flask import Flask, render_template, request
 
 from morse import translate, show_morse_table
+from loggers import init_logger
 
 app = Flask(__name__)
-
-
-# @app.route("/")
-# def home():
-#     placeholder = 'Enter your message here'
-#     return render_template("index.html", input_placeholder=placeholder)
-
-
-# @app.route("/<name>")
-# def test(name):
-#     return render_template("index.html", content=name)
+app_logger = init_logger()
 
 
 @app.route("/", methods=["POST", "GET"])
@@ -23,7 +13,12 @@ def translate_msg():
     if request.method == "POST":
         data = request.form["msg"]
         placeholder = data
-        result = translate(data)
+        try:
+            result = translate(data)
+        except Exception as err:
+            result = "Sorry Unknown error ocuured " \
+                     "please follow the instructions or contact with us"
+            app_logger.fatal(err)
         return render_template("index.html", input_placeholder=placeholder, result=result)
     else:
         return render_template("index.html", input_placeholder=placeholder)
