@@ -29,7 +29,7 @@ header nav ul {
 
 header nav ul > li {
     margin: 5px;
-    border-right: 2px solid black;
+    border-left: 2px solid black;
     padding: 5px;
 }
 
@@ -148,7 +148,7 @@ main div form .inputForm {
 
 }
 
-.result {
+.form_result {
     position: absolute;
     width: 614px;
     height: 348px;
@@ -158,7 +158,11 @@ main div form .inputForm {
     border: 1px solid #110F0F;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
     font-size: 20px;
-    overflow: scroll;
+
+}
+
+.result{
+    white-space: pre-wrap;
 }
 
 .tables{
@@ -237,7 +241,7 @@ footer {
 
     }
 
-    .result {
+    .form_result {
         width: 717px;
         left: 25px;
         top: 1138px;

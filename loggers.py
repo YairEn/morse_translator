@@ -1,7 +1,8 @@
+from typing import Any
 import logging
 
 
-def init_logger():
+def init_logger() -> Any:
     # The basic of the Code is from Logging HOWTO website that create a logger and stream handler
     # to print the log to console
     # https://docs.python.org/3/howto/logging.html

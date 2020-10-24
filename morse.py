@@ -1,18 +1,30 @@
-from morse_tables import get_table_by_text, MORSE_TABLES
-from validators import check_is_alpha, check_is_morse, check_unsupported_letters
+from typing import Dict, List
 import requests
 
+from morse_tables import get_table_by_text, MORSE_TABLES
+from validators import check_is_alpha, check_is_morse, check_unsupported_letters
 from exceptions import LanguageDoseNotSupported, MixedLanguages, UnsupportedLetter
 import logging
 
+# Get logger
 app_logger = logging.getLogger('morse_logger')
 
 
-def _get_unique_letters(text):
+def _get_unique_letters(text: str) -> str:
+    """
+    Get one instance of the letters in the text
+    :param text: message from user
+    :return: one instance of each letter in string
+    """
     return ''.join(set(text))
 
 
-def translate(text):
+def translate(text: str) -> str:
+    """
+    Translate the text from user to morse/normal text
+    :param text: Message from user
+    :return: The translated message
+    """
     try:
         is_alpha = check_is_alpha(text)
         is_morse = check_is_morse(text)
@@ -44,13 +56,19 @@ def translate(text):
         return err.msg
 
 
-def _encocde(text, morse_table):
+def _encocde(text: str, morse_table: Dict[str, str]) -> str:
+    """
+    Encode the message from normal text to morse
+    :param text: Message from user
+    :param morse_table: Morse table to convert the message by it
+    :return: Message encoded
+    """
     unique_letters_in_text = _get_unique_letters(text)
 
     for letter in unique_letters_in_text:
         translated_letter = morse_table.get(letter.upper())
         if translated_letter is None:
-            translated_letter = _get_key_by_value(morse_table, letter)
+            raise UnsupportedLetter
 
         if letter != '\n' and letter != ' ':
             translated_letter += ' '
@@ -59,7 +77,14 @@ def _encocde(text, morse_table):
     return text
 
 
-def _decode(text):
+def _decode(text: str) -> str:
+    """
+    Decode the morse code to normal text
+    using API - www.morsecode-api.de of Morsecode As A Service by repat
+    link to - https://repat.github.io/morsecode-api/
+    :param text: Message from user
+    :return: Message decoded
+    """
     try:
         text = text.replace('\n', ' ')
         text = text.replace('\r', ' ')
@@ -70,11 +95,9 @@ def _decode(text):
         app_logger.fatal(err)
 
 
-def show_morse_table():
+def show_morse_table() -> List[Dict[str, str]]:
+    """
+    Get all morse tables
+    :return: Morse tables
+    """
     return MORSE_TABLES
-
-
-def _get_key_by_value(dict_in, value_in):
-    for key, value in dict_in.items():
-        if value == value_in:
-            return key

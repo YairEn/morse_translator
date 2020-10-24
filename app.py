@@ -9,6 +9,10 @@ app_logger = init_logger()
 
 @app.route("/", methods=["POST", "GET"])
 def translate_msg():
+    """
+    Home page get the message to translate
+    :return: index.html template with the translated message
+    """
     placeholder = 'Enter your message here'
     if request.method == "POST":
         data = request.form["msg"]
@@ -26,6 +30,11 @@ def translate_msg():
 
 @app.route("/morse_table.html")
 def morse_table():
+    """
+    Show the morse tables
+    :return: morse_table.html template with all the morse tables ("A": ".-")
+    that the app supported
+    """
     morse_table_result = show_morse_table()
     return render_template("morse_table.html", morse_table_result=morse_table_result)
 
