@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block mini_title %} Morse Table {% endblock %}
+{% block content %}
+        <div class="tables">
+            {% for morse_table in morse_table_result%}
+            <table class="morse_table">
+                <thead>
+                <tr>
+                    <th>Letter</th>
+                    <th>Morse Letter</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for letter, morse_letter in morse_table.items() %}
+                <tr>
+                    <td>{{letter}}</td>
+                    <td>{{morse_letter}}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% endfor %}
+        </div>
+{%endblock%}

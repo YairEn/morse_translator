@@ -1,4 +1,5 @@
 from typing import Dict
+
 from exceptions import LanguageDoseNotSupported
 
 # Dictionary representing the morse code chart
@@ -20,11 +21,11 @@ MORSE_EN_CODE_DICT = {'A': '.-', 'B': '-...',
                       '(': '-.--.', ')': '-.--.-', '!': '-.-.--',
                       ' ': ' ', '\n': '\n', '\r': ''}
 
-MORSE_HE_CODE_DICT = {
-    'א': '.-'
-}
+# MORSE_HE_CODE_DICT = {
+#     'א': '.-', 'ב': ''
+# }
 
-MORSE_TABLES = [MORSE_EN_CODE_DICT, MORSE_HE_CODE_DICT]
+MORSE_TABLES = [MORSE_EN_CODE_DICT]
 
 UNSUPPORTED_LETEERS = ['~', '_', '`', '#', '$', '%', '^', ';', '*', '<', '>', '\\']
 

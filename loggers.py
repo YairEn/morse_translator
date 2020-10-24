@@ -1,5 +1,5 @@
-from typing import Any
 import logging
+from typing import Any
 
 
 def init_logger() -> Any:

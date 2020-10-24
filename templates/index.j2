@@ -2,12 +2,12 @@
 
 {% block content%}
 
-<div>
+    <div>
                     <span class="welcome">
                         Welcome!
                     </span>
 
-    <pre class="usage">
+        <pre class="usage">
     Usage:
     - To translate normal text just type in the message
 
@@ -17,25 +17,26 @@
     and words by 2 spaces
                 </pre>
 
-    <label class="lblInputMsg">Input Message:</label>
-    <form class="form_msg" action="#" method="post">
+        <label class="lblInputMsg">Input Message:</label>
+
+        <form class="form_msg" action="#" method="post">
                     <textarea class="inputForm" name="msg" title="" cols="30" rows="10"
                               placeholder="Enter your text here">
 {{input_placeholder}}</textarea>
-        <label class="lblOutputMsg">Output Message:</label>
-        <input class="btnTranslate" type="submit" value="Translate">
-    </form>
-</div>
+            <label class="lblOutputMsg">Output Message:</label>
+            <input class="btnTranslate" type="submit" value="Translate">
+        </form>
+    </div>
 
-<div class="form_result">
-    <pre class="result">{{result}}</pre>
-</div>
+    <div class="form_result">
+        <pre class="result">{{result}}</pre>
+    </div>
 
-<div>
+    <div>
     <pre class="note">
 Note!
 The translator only supports English.
-New languages - coming soon!
+New languages - comming soon!
             </pre>
-</div>
+    </div>
 {%endblock%}

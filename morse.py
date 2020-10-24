@@ -1,10 +1,10 @@
-from typing import Dict, List
-import requests
-
-from morse_tables import get_table_by_text, MORSE_TABLES
-from validators import check_is_alpha, check_is_morse, check_unsupported_letters
-from exceptions import LanguageDoseNotSupported, MixedLanguages, UnsupportedLetter
 import logging
+from typing import Dict, List
+
+from exceptions import LanguageDoseNotSupported, MixedLanguages, UnsupportedLetter
+from morse_tables import get_table_by_text, MORSE_TABLES
+import requests
+from validators import check_is_alpha, check_is_morse, check_unsupported_letters
 
 # Get logger
 app_logger = logging.getLogger('morse_logger')

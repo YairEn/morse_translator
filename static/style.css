@@ -197,7 +197,7 @@ td {
 }
 
 footer {
-    margin-top: 40rem;
+    margin-top: 60rem;
     margin-bottom: 5px;
     text-align: center;
 }
@@ -245,6 +245,10 @@ footer {
         width: 717px;
         left: 25px;
         top: 1138px;
+    }
+
+    .result{
+        font-size: 26px;
     }
 
     .note {

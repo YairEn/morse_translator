@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 
-from morse import translate, show_morse_table
 from loggers import init_logger
+from morse import show_morse_table, translate
 
 app = Flask(__name__)
 app_logger = init_logger()
@@ -20,8 +20,8 @@ def translate_msg():
         try:
             result = translate(data)
         except Exception as err:
-            result = "Sorry Unknown error ocuured " \
-                     "please follow the instructions or contact with us"
+            result = ("Sorry Unknown error occurred "
+                      "please follow the instructions or contact with us")
             app_logger.fatal(err)
         return render_template("index.html", input_placeholder=placeholder, result=result)
     else:
@@ -40,4 +40,4 @@ def morse_table():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
