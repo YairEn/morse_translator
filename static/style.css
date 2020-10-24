@@ -161,6 +161,10 @@ main div form .inputForm {
     overflow: scroll;
 }
 
+.tables{
+    display: flex;
+}
+
 table {
     margin-left: auto;
     margin-right: auto;
@@ -189,7 +193,7 @@ td {
 }
 
 footer {
-    margin-top: 900px;
+    margin-top: 40rem;
     margin-bottom: 5px;
     text-align: center;
 }
